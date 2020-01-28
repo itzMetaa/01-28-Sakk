@@ -70,6 +70,15 @@ public class SakkTabla {
     }
 
     public boolean isErvenyesLepes(int sx, int sy, int dx, int dy){
+        if (isFigura(sx,sy)){
+            if (isKivalasztottFigura(sx,sy,11) ||
+                    isKivalasztottFigura(sx,sy,21)){
+                return isErvenyesGyalogLepes(sx,sy,dx,dy);
+            }
+        }
+
+
+
         return true;
     }
 
@@ -79,6 +88,22 @@ public class SakkTabla {
 
     public boolean isSakk(){
         return true;
+    }
+
+    public boolean isErvenyesGyalogLepes(int sx, int sy, int dx, int dy){
+        boolean helyesVilagosLepesE = false;
+        boolean helyesSotetLepesE = false;
+
+
+        if (isVilagosFigura(sx,sy)){
+            boolean kezdoLepes = (sx == 6 && sx-dx <= 2 && sy == dy);
+            boolean lepes = sx-dx == 1 && sy == dy && isUresHely(dx,dy);
+            boolean utes = sx-dx == 1 && Math.abs(sy-dy) == 1 && isSotetFigura(dx,dy);
+
+            helyesVilagosLepesE = kezdoLepes || lepes || utes;
+        }
+
+        return helyesVilagosLepesE || helyesSotetLepesE;
     }
 
 }
