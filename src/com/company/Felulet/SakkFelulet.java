@@ -48,6 +48,12 @@ public class SakkFelulet extends JFrame {
         this.pnlJatekTabla.removeAll();
 
         for (int i = 0; i < 8; i++) {
+            JLabel hivatkozasABC = new JLabel();
+            hivatkozasABC.setText(String.format("%s.", (char)(i+65)));
+            this.pnlJatekTabla.add(hivatkozasABC);
+        }
+
+        for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 JButton btn = new JButton();
                 Mezo m = new Mezo(i,j, tabla.getErtek(i, j));
