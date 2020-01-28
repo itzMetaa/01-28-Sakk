@@ -50,6 +50,8 @@ public class SakkFelulet extends JFrame {
         for (int i = 0; i < 8; i++) {
             JLabel hivatkozasABC = new JLabel();
             hivatkozasABC.setText(String.format("%s.", (char)(i+65)));
+            hivatkozasABC.setHorizontalAlignment((SwingConstants.CENTER));
+            hivatkozasABC.setVerticalAlignment((SwingConstants.CENTER));
             this.pnlJatekTabla.add(hivatkozasABC);
         }
 
