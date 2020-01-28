@@ -50,8 +50,8 @@ public class SakkFelulet extends JFrame {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 8; j++) {
                 JButton btn = new JButton();
-                btn.setText(this.tabla.getErtek(i,j) + "");
-                this.pnlJatekTabla.add(btn);
+                Mezo m = new Mezo(i,j, tabla.getErtek(i, j));
+                this.pnlJatekTabla.add(m);
             }
         }
 
