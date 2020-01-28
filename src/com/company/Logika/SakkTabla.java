@@ -1,5 +1,7 @@
 package com.company.Logika;
 
+import java.util.Arrays;
+
 public class SakkTabla {
     private int[][] tabla;
 
@@ -21,8 +23,10 @@ public class SakkTabla {
     }
 
     public void lep(int sx, int sy, int dx, int dy){
-        this.tabla[dx][dy] = this.tabla[sx][sy];
-        this.tabla[sx][sy] = 0;
+        if (isErvenyesLepes(sx,sy,dx,dy)) {
+            this.tabla[dx][dy] = this.tabla[sx][sy];
+            this.tabla[sx][sy] = 0;
+        }
     }
 
     public boolean isKivalasztottFigura(int x, int y, int figura){
@@ -103,7 +107,27 @@ public class SakkTabla {
             helyesVilagosLepesE = kezdoLepes || lepes || utes;
         }
 
+        if (isSotetFigura(sx,sy)){
+            boolean kezdoLepes = (sx == 1 && dx-sx <= 2 && sy == dy);
+            boolean lepes = dx-sx == 1 && sy == dy && isUresHely(dx,dy);
+            boolean utes = dx-sx == 1 && Math.abs(sy-dy) == 1 && isSotetFigura(dx,dy);
+
+            helyesSotetLepesE = kezdoLepes || lepes || utes;
+        }
+
         return helyesVilagosLepesE || helyesSotetLepesE;
     }
 
+    @Override
+    public String toString() {
+        String s = "";
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                s += String.format("%2d ", this.tabla[i][j]);
+            }
+            s+= "\n";
+        }
+
+        return s;
+    }
 }
